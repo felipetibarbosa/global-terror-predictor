@@ -20,7 +20,7 @@ A estrutura do projeto seguiu a metodologia **CRISP-DM (Cross-Industry Standard 
 
 2. **Entendimento dos Dados**
 
-    - **Fonte**: Global Terrorism Database (GTD) - Mais de 200 mil registros com mais de 100 features.
+    - **Fonte**: [Global Terrorism Database (GTD)](https://www.start.umd.edu/research-projects/global-terrorism-database-gtd) - Mais de 200 mil registros com mais de 100 features.
 
 - **Análise Exploratória**:
 
