@@ -1,68 +1,54 @@
-# Aprendizado de Máquina para Predição de Incidentes de grupos Terroristas
+# 💣 Machine Learning para Predição de Incidentes de Grupos Terroristas
 
-Este projeto tem como objetivo prever qual grupo terrorista realizou um ataque específico utilizando dados da base de dados Global Terrorism Database (GTD). A análise e o modelo preditivo foram desenvolvidos utilizando Python e diversas bibliotecas de machine learning.
+## Visão Geral do Projeto
 
-## Índice
+Este projeto tem como objetivo desenvolver um sistema de classificação de Machine Learning para prever o grupo terrorista responsável por um ataque com base em diversas características históricas. Utilizando o rico Global Terrorism Database (GTD), exploramos padrões em ataques passados para criar um modelo preditivo de alta precisão que pode ser uma ferramenta valiosa para a segurança pública e a formulação de políticas de defesa.
 
-- [Introdução](#introdução)
-- [Objetivos](#objetivos)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Como Usar](#como-usar)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
+O foco é em responder a uma questão central:
 
-## Introdução
+- Quais fatores influenciam o tipo de ataque e o grupo responsável por ele, e como podemos usar essas informações para prever futuros ataques com alta precisão?
 
-O **Global Terror Predictor** é um projeto que visa prever o grupo terrorista responsável por ataques com base em um conjunto de características dos incidentes. O projeto utiliza a base de dados **Global Terrorism Database (GTD)**, uma das mais abrangentes bases de dados sobre terrorismo no mundo, para realizar a tarefa de predição.
+## 🛠️ Metodologia Utilizada: CRISP-DM
 
-A base de dados contém informações detalhadas sobre incidentes terroristas, como local, tipo de ataque, armas utilizadas, entre outros. A tarefa de prever o grupo responsável por um ataque é um desafio devido à natureza complexa e multidimensional dos dados.
+A estrutura do projeto seguiu a metodologia **CRISP-DM (Cross-Industry Standard Process for Data Mining)** para garantir uma abordagem estruturada e eficaz:
 
-## Objetivos
+1. **Compreensão do Negócio**
 
-- Desenvolver um modelo de machine learning capaz de prever o grupo terrorista que realizou um ataque.
-- Analisar os dados da GTD e extrair insights relevantes.
-- Implementar técnicas de limpeza e pré-processamento de dados para melhorar a qualidade das previsões.
-- Avaliar a performance do modelo utilizando métricas apropriadas.
+    - **Objetivo**: Prever o grupo responsável pelo ataque e identificar padrões nos grupos terroristas para melhorar a segurança global.
 
-## Tecnologias Utilizadas
+    - **Métricas**: Acurácia, Precisão, Recall e F1-Score.
 
-- **Python**: Linguagem principal para análise de dados e desenvolvimento do modelo.
-- **Jupyter Notebook**: Ambiente utilizado para desenvolver e documentar o código.
-- **Pandas**: Biblioteca para manipulação e análise de dados.
-- **Scikit-learn**: Biblioteca para criação e avaliação de modelos de machine learning.
-- **Matplotlib e Seaborn**: Bibliotecas para visualização de dados.
-- **Global Terrorism Database (GTD)**: Fonte dos dados utilizados para o treinamento e teste do modelo.
+2. **Entendimento dos Dados**
 
-### Clonando o Repositório
+    - **Fonte**: Global Terrorism Database (GTD) - Mais de 200 mil registros com mais de 100 features.
 
-Clone o repositório para o seu ambiente local:
+- **Análise Exploratória**:
 
-```bash
-git clone https://github.com/feliperafaelbarbosa/global-terror-predictor.git
-cd global-terror-predictor
-```
+    - **Ataques por Ano**: Os dados mostram uma tendência de aumento significativo no número de ataques terroristas ao longo dos anos, com picos notáveis.
 
-## Como Usar
+    - **Top 10 Grupos**: Foi identificado o ranking dos 10 grupos mais ativos, com o grupo Taliban sendo o principal, seguido por Shining Path e Provisional Irish Republican Army (com base no chunk de dados analisado).
 
-1. Baixe os dados do GTD (caso ainda não tenha feito isso) no formato CSV e coloque-os no diretório `data/`.
-2. Abra o notebook `global_terror_predictor.ipynb` utilizando o Jupyter Notebook.
-3. Execute as células do notebook para carregar os dados, realizar a análise e treinar o modelo preditivo.
-4. Você pode ajustar os parâmetros do modelo ou realizar novas visualizações conforme necessário.
+    - **Geolocalização (2016-2020)**: A visualização global dos ataques mostra as áreas de maior concentração e risco.
 
-## Contribuição
+    - **Vítimas (Mortos/Feridos)**: A análise dos outliers para o número de mortos e feridos confirmou a presença de eventos extremos reais, que foram mantidos nos dados por serem representativos da realidade do terrorismo.
 
-Contribuições são bem-vindas! Se você deseja melhorar o projeto ou adicionar novas funcionalidades, siga os passos abaixo:
+    - **Sucesso vs. Suicida**: A maioria dos ataques são bem-sucedidos, independentemente de serem ataques suicidas ou não, embora os ataques não-suicidas sejam a vasta maioria.
 
-1. Fork o repositório.
-2. Crie um branch para sua feature (`git checkout -b feature/nome-da-feature`).
-3. Commit suas mudanças (`git commit -m 'Adicionei nova feature'`).
-4. Dê push para o branch (`git push origin feature/nome-da-feature`).
-5. Abra um Pull Request.
+3. **Preparação dos Dados**
 
-## Licença
+- **Seleção de Features**: Foram selecionadas as 28 colunas mais relevantes, incluindo: data (```iyear```, ```imonth```, ```iday```), localização (```country```, ```region```, ```latitude```, ```longitude```), tipo de ataque e arma, sucesso, se foi suicida (```suicide```), se foi reivindicado (```claimed```), entre outras.
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+- **Tratamento de Dados Ausentes**:
 
----
+    - **Numéricos**: Preenchidos com a mediana.
 
-Esse README abrange os principais aspectos do projeto. Você pode ajustá-lo conforme necessário ou incluir informações adicionais específicas ao seu trabalho.
+    - **Categóricos**: Preenchidos com a moda.
+
+## 📈 Resultados e Conclusão
+
+O modelo Random Forest demonstrou a melhor performance, atingindo uma Acurácia de 97% e um F1-Score de 95% no conjunto de testes.
+
+A alta pontuação das métricas sugere que as features selecionadas (como localização, ano, tipo de ataque e arma) são extremamente preditivas para a identificação do grupo terrorista responsável, validando o objetivo principal do projeto.
+
+
+**Observação**: O projeto foi executado em partes (com um chunk_size de 25.000 linhas) devido ao tamanho da base de dados original e à complexidade da codificação One-Hot para as variáveis categóricas com alta cardinalidade (como city e provstate), o que resultou em um grande número de features (6894 no X_train). O desempenho do Random Forest sugere que ele foi capaz de lidar com essa alta dimensionalidade de forma eficaz.
