@@ -2,7 +2,7 @@
 
 ## Visão Geral do Projeto
 
-Este projeto tem como objetivo desenvolver um sistema de classificação de Machine Learning para prever o grupo terrorista responsável por um ataque com base em diversas características históricas. Utilizando o rico Global Terrorism Database (GTD), exploramos padrões em ataques passados para criar um modelo preditivo de alta precisão que pode ser uma ferramenta valiosa para a segurança pública e a formulação de políticas de defesa.
+Este projeto teve como objetivo desenvolver um sistema de classificação de Machine Learning para prever o grupo terrorista responsável por um ataque com base em diversas características históricas. Utilizando o rico Global Terrorism Database (GTD), exploramos padrões em ataques passados para criar um modelo preditivo de alta precisão que pode ser uma ferramenta valiosa para a segurança pública e a formulação de políticas de defesa.
 
 O foco é em responder a uma questão central:
 
